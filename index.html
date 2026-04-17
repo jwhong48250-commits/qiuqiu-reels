@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hand Fist → Audio (MediaPipe Hands)</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="dot"></div>
+          <div class="title">Hand Fist Audio Trigger</div>
+        </div>
+        <div class="hint">
+          왼손 주먹 → <b>sound1.mp3</b> / 오른손 주먹 → <b>sound2.mp3</b>
+        </div>
+      </header>
+
+      <section class="stage">
+        <div class="stageCol">
+          <div class="stack" aria-label="camera and overlay canvas">
+            <video id="video" class="video" playsinline muted></video>
+            <canvas id="canvas" class="overlay"></canvas>
+            <div id="hud" class="hud" aria-live="polite"></div>
+
+            <div id="gate" class="gate">
+              <div class="gateCard">
+                <div class="gateTitle">시작하기</div>
+                <p class="gateDesc">
+                  카메라 권한을 요청하고, 오디오 재생을 위해 사용자 입력을 한 번 받습니다.
+                </p>
+                <button id="startBtn" class="btnPrimary">Start</button>
+                <p class="gateFootnote">
+                  브라우저 정책상 첫 클릭 전에는 오디오가 차단될 수 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gamePanel" aria-label="text sequence game">
+            <div class="gameTitle">촵츄촵촵츄촵츄촵촵츄</div>
+            <div id="gameLine" class="gameLine" aria-live="polite"></div>
+            <div class="gameControls">
+              <div id="gameHint" class="gameHint"></div>
+              <button id="restartBtn" class="btnGhost" type="button">재시작</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span class="pill">Dark UI</span>
+        <span class="pill">Vanilla JS</span>
+        <span class="pill">MediaPipe Hands (CDN)</span>
+      </footer>
+    </main>
+
+    <!-- Audio: local files next to this html (or update paths) -->
+    <audio id="audioLeft" src="./sound1.mp3" preload="auto"></audio>
+    <audio id="audioRight" src="./sound2.mp3" preload="auto"></audio>
+    <audio id="audioVictory" src="./sound3.mp3" preload="auto"></audio>
+
+    <!-- MediaPipe Hands (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.min.js"></script>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
